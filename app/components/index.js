@@ -1,4 +1,4 @@
-import Calendar from './Calendar/Calendar.jsx'
+import Calendar from './Home/Calendar.jsx'
 
 export {
   Calendar

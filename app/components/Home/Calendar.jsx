@@ -3,7 +3,7 @@ import { clearNotice } from 'store/date/actions'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import Row from './Row/Row.jsx'
-import './Home.styl'
+import './Calendar.styl'
 
 const defaultData = {
   'mo': [],
@@ -43,7 +43,7 @@ class Calendar extends Component {
     let bt = null
     let et = null
     let newPoints = []
-    for (let i = 0; i < points.length; i++) {
+    for (let i = 0, l = points.length; i < l; i++) {
       newPoints.push(points[i] ? 'y' : 'n')
     }
     newPoints.forEach((point, index) => {

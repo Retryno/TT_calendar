@@ -15,10 +15,9 @@ class Row extends Component {
   componentWillReceiveProps (nextProps) {
     if (this.props.date.countOfClear !== nextProps.date.countOfClear) {
       let { columns } = this.state
-      console.log(columns)
-      for (let i = 0, l = columns.length; i < l; ++i) {
+      columns.forEach((cell, i) => {
         columns[i] = 0
-      }
+      })
       this.setState({isAll: false, columns})
     }
   }
@@ -39,14 +38,6 @@ class Row extends Component {
     this.setState({columns})
   }
 
-  huinya () {
-    let test = {}
-    ;[...document.querySelectorAll('tr')].forEach(i => {
-      test[i.innerText] = [...i.querySelectorAll('td')].filter(d => d.getAttribute('data-time') === '1' && d.getAttribute('data-time')).map(df => df.getAttribute('data-key'))
-    })
-    console.log(test)
-  }
-
   onCeilClick = index => {
     let { columns } = this.state
     columns[index] = columns[index] === 1 ? 0 : 1
@@ -57,14 +48,13 @@ class Row extends Component {
   onAllDayClick = () => {
     let { isAll, columns } = this.state
     for (let i = 0, l = columns.length; i < l; ++i) {
-      columns[i] = isAll ? 0 : 1
+      columns[i] = +!isAll
     }
     this.sendToReducer(columns)
     this.setState({isAll: !isAll, columns})
   }
 
   onCeilOver = (e, index) => {
-    // this.huinya()
     if (e.buttons === 1) {
       this.onCeilClick(index)
     }

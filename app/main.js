@@ -1,4 +1,4 @@
-import { Home } from './components'
+import { Calendar } from './components'
 import { createStore, combineReducers, applyMiddleware } from 'redux'
 import { HashRouter as Router, Route } from 'react-router-dom'
 import { composeWithDevTools } from 'redux-devtools-extension'
@@ -16,7 +16,7 @@ ReactDOM.render(
   <Provider store={store}>
     <Router>
       <div>
-        <Route exact path='/' component={Home} />
+        <Route exact path='/' component={Calendar} />
       </div>
     </Router>
   </Provider>,
